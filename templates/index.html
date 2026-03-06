@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Lista de Estudiantes{% endblock %}
 {% block content %}
-<a href="" class="btn btn-success mb-3">Agregar Estudiante</a>
+<a href="{{ url_for('create_estudiante') }}" class="btn btn-success mb-3">Agregar Estudiante</a>
 <br>
 <table class="table table-bordered">
     <thead>
@@ -24,7 +24,11 @@
             <td>{{ estudiante.ap_materno }}</td>
             <td>{{ estudiante.semestre }}</td>
             <td>
-            </td> 
+                <a href="{{ url_for('delete_estudiante', no_control= estudiante.no_control )}}"
+                    class="btn btn-danger">Eliminar</a>
+                <a href="{{ url_for('update_estudiante', no_control= estudiante.no_control )}}"
+                    class="btn btn-warning">Actualizar</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
